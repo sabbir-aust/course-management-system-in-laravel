@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Student;
 use App\Department;
 use App\Classes;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 //use Intervention\Image\Facades\Image;
 
 
@@ -13,10 +15,8 @@ class StudentController extends Controller
 {
     public function index(){
 
+
     	$students = Student::all();
-
-
-        
     	return view('student.index', compact('students'));
 
     }
@@ -24,8 +24,9 @@ class StudentController extends Controller
     public function create(){
 
        $departments = Department::all();
+       $users = User::all()->unique('email');
         //$classes = Classes::all();
-    	return view('student.create',compact('departments'));
+    	return view('student.create',compact('departments','users'));
     	
     }
 
@@ -56,14 +57,13 @@ class StudentController extends Controller
             'name' => $request->name,
             'father_name' => $request->father_name,
             'phone_number' => $request->phone_number,
-            'email' => $request->email,
+            'user_id' => $request->user_id,
             'roll' => $request->roll,
             'reg_id' => $request->reg_id,
             'department_id' => $request->department_id,
+            
             //'classes_id' => $request->classes_id,
             'mother_name' => $request->mother_name,
-            'present_address' => $request->present_address,
-            'permanent_address' => $request->permanent_address,
             'cgpa' => $request->cgpa, 
             //'image' => $stdImage,
 
@@ -84,10 +84,11 @@ class StudentController extends Controller
 
     public function edit($id){
 
-    	$data=Student::find($id);
+    	$students=Student::find($id);
         $departments= Department::all();
+        $users = User::all();
         //$classes = Classes::all();
-    	return view('student.edit',compact('data','departments'));
+    	return view('student.edit',compact('students','departments','users'));
     	
     }
 
@@ -114,15 +115,15 @@ class StudentController extends Controller
         $student->name = $request->name;
         $student->father_name = $request->father_name;
         $student->phone_number = $request->phone_number;
-        $student->email = $request->email;
+        $student->user_id= $request->user_id;
         $student->roll = $request->roll;
         $student->reg_id = $request->reg_id;
         $student->department_id= $request->department_id;
         //$student->classes_id = $request->classes_id;
         $student->mother_name=$request->mother_name;
-        $student->present_address = $request->present_address;
-        $student->permanent_address= $request->permanent_address;
+       
         $student->cgpa = $request->cgpa;
+        
         //$student->image = $stdImage;
 
         if($student->save()){

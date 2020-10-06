@@ -11,20 +11,21 @@
                           {{ session('status') }}
                       </div>
                   @endif
-	
                 
 		                <table class="table" style="text-align: center;">
   			               <thead>
     			               <tr>
       				              <th scope="col">#</th>
+
       				              <th scope="col">Name</th>
+                            <th scope="col">Email</th>
                             <!--<th scope="col">Image</th>-->
+                            <th scope="col">Phone</th>
+                            <th scope="col">Roll</th>
+                            <th scope="col">Registration No.</th>
+                            <th scope="col">Department</th>
       				              <th scope="col">Father's Name</th>
                             <th scope="col">Mother's Name</th>
-                            <th scope="col">Phone</th>
-                            
-                            <th scope="col">Email</th>
-                            <th scope="col">Department</th>
                             <th scope="col">CGPA</th>
                             <!--<th scope="col">Class</th>-->
                             <th scope="col">Action</th>
@@ -37,13 +38,13 @@
     			           <tr>
     				            <th scope="row">{{ $student->id }}</th>
     				              <td>{{ $student->name }}</td>
-                          <!--<td><img src="{{ url('uploads/students/',$student->image) }}" style="height: 50px; width: 50px; "></td>-->
+                          <td>{{ $student->user->email }}</td>
+                          <td>{{ $student->phone_number }}</td>
+                          <td>{{ $student->roll }}</td>
+                          <td>{{ $student->reg_id }}</td>
+                          <td>{{ $student->department->title }}</td>
                           <td>{{ $student->father_name }}</td>
                           <td>{{ $student->mother_name }}</td>
-                          <td>{{ $student->phone_number }}</td>
-                          
-                          <td>{{ $student->email }}</td>
-                          <td>{{ $student->department->title }}</td>
                           <td>{{ $student->cgpa }}</td>
     				              <td><a href="{{ url('student/edit', $student->id) }}">Edit</a> || 
     					               <form id="delete-form-{{ $student->id }}" method="post" action="{{url ('student/delete', $student->id)}}" style="display:none;">

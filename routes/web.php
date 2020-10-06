@@ -35,9 +35,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::group(['middleware' => 'auth'], function(){
+
 
 	//Department
 Route::get('departments', 'DepartmentController@index');
@@ -67,7 +66,8 @@ Route::delete('student/delete/{id}', 'StudentController@delete');
 //resourse route
 Route::resource('faculties','FacultyController');
 Route::resource('categories','CategoryController');
-Route::resource('seatlimits','SeatlimitController');
+Route::resource('courses','CourseController');
+Route::resource('registrations','RegistrationController');
 
 
 

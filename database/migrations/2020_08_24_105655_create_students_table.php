@@ -17,15 +17,15 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone_number');
-            $table->string('email')->nullable();
+            $table->string('user_id');
+            //$table->string('email')->nullable();
             $table->string('roll')->nullable();
             $table->string('reg_id');
             $table->string('department_id');
             //$table->integer('classes_id');
             $table->string('father_name');
             $table->string('mother_name');
-            $table->string('present_address');
-            $table->string('permanent_address');
+            
             $table->float('cgpa');
             
             //$table->string('image');

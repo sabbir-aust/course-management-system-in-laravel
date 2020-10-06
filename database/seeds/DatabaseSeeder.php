@@ -11,13 +11,34 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
-        DB ::table('users')->insert([
-        	'name'=> "Sabbir",
-        	'email'=> "sabbir@gmail.com",
+        //$this->call(UserSeeder::class);
+
+        DB::table('users')->insert([
+
+        	'name' => "Sabbir",
+        	'email' => "sabbir@gmail.com",
         	'password'=> Hash::make('12345'),
-        	"role"=> "admin"
+        	'role' => "admin"
 
         ]);
+
+        DB::table('users')->insert([
+
+        	'name' => "Sabbir",
+        	'email' => "sabbir@email.com",
+        	'password'=> Hash::make('12345'),
+        	'role' => "student"
+
+        ]);
+
+        DB::table('users')->insert([
+
+        	'name' => "Swarna",
+        	'email' => "swarna@gmail.com",
+        	'password'=> Hash::make('12345'),
+        	'role' => "student"
+
+        ]);
+            
     }
 }

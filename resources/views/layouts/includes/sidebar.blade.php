@@ -3,6 +3,8 @@
         <div class="card-header">{{ __('Sidebar') }}</div>
 
 
+
+        @if(Auth::user()->role == "admin")
             <div class="card-body">
                 <a href="{{ route('faculties.index') }}">Faculties</a>
             </div>
@@ -24,8 +26,27 @@
             </div>
 
             <div class="card-body">
-                <a href="{{ route('seatlimits.index') }}">Seat Limit</a>
+                <a href="{{ route('courses.index') }}">Add Course</a>
             </div>
+
+            <div class="card-body">
+                <a href="{{ route('registrations.index') }}">Course Registration</a>
+            </div>
+
+            
+
+            @endif
+
+            @if(Auth::user()->role == "student")
+            <div class="card-body">
+                <a href="">Profile</a>
+            </div>
+
+            <div class="card-body">
+                <a href="{{ route('registrations.index') }}">Course Registration</a>
+            </div>
+            @endif
+
 
             
 

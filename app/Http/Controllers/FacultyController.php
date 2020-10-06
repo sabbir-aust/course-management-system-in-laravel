@@ -15,7 +15,7 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = Faculty::with('department')->latest()->paginate(); //paginate default 15 per page
+        $faculties = Faculty::orderBy('id')->with('department')->latest()->paginate(); //paginate default 15 per page
 
         return view('faculty.index', compact('faculties'));
     }

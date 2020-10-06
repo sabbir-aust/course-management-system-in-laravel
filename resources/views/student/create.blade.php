@@ -6,7 +6,7 @@
 	<div class="container">
    
             <div class="card">
-                <div class="card-header">Add New Students</div>
+                <div class="card-header">Add New Student</div>
                 @if (session('status'))
                 <div class="alert alert-success" role= "alert">
                     {{ session('status') }}
@@ -46,14 +46,20 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
+                            <label for="user_id" class="col-md-4 col-form-label text-md-right">Email</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="text" class="form-control {{ $errors->has('email') ? ' is-invalid':''}}" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <select class="form-control {{ $errors->has('user_id') ? ' is-invalid':''}}" name="user_id" required>
+                                    <option value="">Select One</option>
+                                    @foreach($users as $user)
 
-                                @if ($errors->has('email'))
+                                    <option value="{{ $user-> id}}">{{ $user->email }}</option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('user_id'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('user_id') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -137,33 +143,9 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="present_address" class="col-md-4 col-form-label text-md-right">Present Address</label>
+                        
 
-                            <div class="col-md-6">
-                                <input id="present_address" type="text" class="form-control {{ $errors->has('present_address') ? ' is-invalid':''}}" name="present_address" value="{{ old('present_address') }}" required autocomplete="present_address" autofocus>
-
-                                @if ($errors->has('present_address'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('present_address') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="permanent_address" class="col-md-4 col-form-label text-md-right">Permanent Address</label>
-
-                            <div class="col-md-6">
-                                <input id="permanent_address" type="text" class="form-control {{ $errors->has('permanent_address') ? ' is-invalid':''}}" name="permanent_address" value="{{ old('permanent_address') }}" required autocomplete="permanent_address" autofocus>
-
-                                @if ($errors->has('permanent_address'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('permanent_address') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                       
 
                         <div class="form-group row">
                             <label for="cgpa" class="col-md-4 col-form-label text-md-right">CGPA</label>

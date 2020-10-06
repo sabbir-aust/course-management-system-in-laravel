@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSeatlimitsTable extends Migration
+class CreateRegistrationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateSeatlimitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('seatlimits', function (Blueprint $table) {
-            $table->id();
-            $table->integer('limit');
+        Schema::create('registrations', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('semester');
+            $table->unsignedBigInteger('student_id');
+            $table->unsignedBigInteger('course_id');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateSeatlimitsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seatlimits');
+        Schema::dropIfExists('registrations');
     }
 }
