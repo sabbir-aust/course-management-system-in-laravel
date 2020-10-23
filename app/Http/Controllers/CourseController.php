@@ -17,7 +17,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::orderBy('id')->with('category','classes','faculty')->latest()->paginate();
+        $courses = Course::orderBy('id')->with('category','classes','faculty')->latest()->paginate(3);
         ;
         return view ('course.index',compact('courses'));
 

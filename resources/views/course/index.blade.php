@@ -5,8 +5,9 @@
     @section('content')
 
         <div class="card" style="overflow-x: auto;">
+            <div class="card-header">Course List</div>
             <div class="card-body">
-                Course List || <a href="{{ route('courses.create') }}">Add New Course</a>
+                <a class="btn btn-success btn-sm" href="{{ route('courses.create') }}">Add New Course</a>
             </div>
             @if (session('status'))
                 <div class="alert alert-success" role="alert">
@@ -14,7 +15,7 @@
                 </div>
             @endif
             
-                <table class="table" style="text-align: center;">
+                <table class="table table-sm" style="text-align: center;">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -71,48 +72,6 @@
            
         </div><br>
 
-        <div class="card">
-            <div class="card-body">
-                <div class="form-group row">
-                    <label for="start_time" class="col-md-4 col-form-label text-md-right">Start Time</label>
-
-                    <div class="col-md-6">
-                        <input id="start_time" type="date" class="form-control{{ $errors->has('start_time') ? ' is-invalid' : '' }}" name="start_time" value="{{ old('start_time') }}" required>
-
-                        @if ($errors->has('start_time'))
-                            <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('start_time') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="end_time" class="col-md-4 col-form-label text-md-right">End Time</label>
-
-                    <div class="col-md-6">
-                        <input id="end_time" type="date" class="form-control{{ $errors->has('end_time') ? ' is-invalid' : '' }}" name="end_time" value="{{ old('end_time') }}"  required>
-
-                        @if ($errors->has('end_time'))
-                            <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('end_time') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
-                <div class="form-group row mb-0">
-                    <div class="col-md-8 offset-md-4">
-                        <button>
-                        <input id="button" type="submit" name="button"/>
-                        
-                        </button>
-
-                    </div>
-                </div>
-            </div>
-
-            
-
-        </div>
+        
 
      @endsection

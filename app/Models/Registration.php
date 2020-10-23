@@ -28,6 +28,6 @@ class Registration extends Model
     }
     public function student()
     {
-        return $this->belongsTo(student::class);
+        return $this->belongsTo('App\Student');
     }
 }

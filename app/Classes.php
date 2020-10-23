@@ -12,4 +12,7 @@ class Classes extends Model
      public function student(){
     	return $this-> hasMany('App\Student');
     }
+    public function registration(){
+      return $this-> belongsTo(Registration::class);
+    }
 }

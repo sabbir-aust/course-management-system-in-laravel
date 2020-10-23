@@ -3,8 +3,9 @@
 @section('title', 'Class')
 	@section('content')
 	<div class="card">
+    <div class="card-header">Class List</div>
 		<div class="card-body">
-			Class List || <a href="{{url('class/create')}}">Add Class</a>
+			<a class="btn btn-success btn-sm" href="{{url('class/create')}}">Add Class</a>
 		</div>
 		@if (session('status'))
                 <div class="alert alert-success" role= "alert">
@@ -13,8 +14,8 @@
                 @endif
 	
 
-		<table class="table">
-  			<thead>
+		<table class="table table-sm" >
+                <thead>
     			<tr>
       				<th scope="col">#</th>
       				<th scope="col">Title</th>

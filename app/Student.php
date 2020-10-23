@@ -20,7 +20,11 @@ class Student extends Model
     }
 
     public function user(){
-      return $this-> belongsTo('App\User');
+      return $this-> belongsTo(User::class,'user_id');
+    }
+
+    public function registration(){
+      return $this-> belongsTo(Registration::class);
     }
 
     public function getId()

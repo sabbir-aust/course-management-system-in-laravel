@@ -13,19 +13,18 @@
 
         <div class="card" style="overflow-x: auto;">
 
-            <div class="card-body">
-                <h4>Course List</h4> 
-            </div>
+            <div class="card-header" style="background-color: #bae1ff">Course List</div>
             @if (session('status'))
                 <div class="alert alert-success" role="alert">
                     {{ session('status') }}
                 </div>
             @endif
-            
-                <table class="table" style="text-align: center;">
+            <form class="table-responsive" method="post" action="{{ route('registrations.store') }}" enctype="multipart/form-data" style="background-color:#f1f9ff">
+                @csrf
+                <table class="table table-sm" style="text-align: center;">
                 <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    
                     <th scope="col">Course Code</th>
                     <th scope="col">Course Name</th>
                     <th scope="col">Category</th>
@@ -42,7 +41,7 @@
                 @foreach($courses as  $data)
                 <tr>
                     
-                    <th scope="row"  value="Ascending">{{ $data->id }}</th>
+                    
                     <td>{{ $data->course_code }}</td>
                     <td>{{ $data->course_name }}</td>
                     <td>{{ $data->category->name }}</td>
@@ -51,14 +50,25 @@
                     <td>{{ \Carbon\Carbon::parse($data->class_start_time)->format('h:i A') }}</td>
                     <td>{{ \Carbon\Carbon::parse($data->class_end_time)->format('h:i A') }}</td>
                     <td>{{ $data->seatlimit }}</td>
-                    <td><input type="submit" valur="select" class="btn btn-primary"></input></td>
+
+                    @if(Auth::user()->role == "student")
                     
-                    
+                    <td>
+                        
+                        <Button type="submit" class="btn btn-outline-success" name="registration" value="{{ $data->id }}">Select</Button> 
+                           
+                        
+                    </td>
+                    @endif  
                 </tr>
                     @endforeach
+
                 
                 </tbody>
+
             </table>
+
+            </form>
                 <!--paginate-->
                 {{ $courses->links() }}
            

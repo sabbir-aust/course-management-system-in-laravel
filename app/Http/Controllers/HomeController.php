@@ -31,20 +31,31 @@ class HomeController extends Controller
     public function index()
     {
         
-        if ((Auth::user()->email == Auth::user()->student->email))  {
-            //$students = Student::all();
-            
-            
-
-            
-        }
+        //if ((Auth::user()->email == Auth::user()->student->email))  {
+            //$students = Student::all();    
+        //}
         //$users = DB::select('students')
         //$student = Student::count();
         //$departments = Department::withCount('student')->get();
         //$classes = Classes::withCount('student')->get();
 
+        if(Auth::user()){
 
+            if(Auth::user()->role == "student"){
 
-        return view('home');
+                $student = Student::where("user_id", Auth::user()->id)->first();
+                return view('home')->with('student',$student);          
+            }
+
+            if(Auth::user()->role == "admin"){
+
+                $user = User::where("id", Auth::user()->id)->first();
+                return view('home')->with('user',$user);
+
+                //$students = Student::where("id", "=", Auth::user()->id)->get();
+            }
+        }
+
+        
     }
 }

@@ -17,7 +17,8 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone_number');
-            $table->string('user_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             //$table->string('email')->nullable();
             $table->string('roll')->nullable();
             $table->string('reg_id');

@@ -3,8 +3,9 @@
 @section('title', 'Departments')
 	@section('content')
 	<div class="card">
+    <div class="card-header">Department List</div>
 		<div class="card-body">
-			Department List || <a href="{{url('department/create')}}">Add Department</a>
+			 <a class="btn btn-success btn-sm" href="{{url('department/create')}}">Add Department</a>
 		</div>
 		@if (session('status'))
                 <div class="alert alert-success" role= "alert">
@@ -13,7 +14,7 @@
                 @endif
 	
 
-		<table class="table">
+		<table class="table table-sm">
   			<thead>
     			<tr>
       				<th scope="col">#</th>

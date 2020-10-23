@@ -57,18 +57,24 @@ Route::delete('class/delete/{id}', 'ClassesController@delete');
 
 //student
 Route::get('students', 'StudentController@index');
+// Route::get('student/studentdetails', 'StudentController@studentdetails');
+
 Route::get('student/create', 'StudentController@create');
 Route::post('student/save', 'StudentController@save');
 Route::get('student/edit/{id}', 'StudentController@edit');
 Route::post('student/update/{id}', 'StudentController@update');
 Route::delete('student/delete/{id}', 'StudentController@delete');
 
+
 //resourse route
 Route::resource('faculties','FacultyController');
 Route::resource('categories','CategoryController');
 Route::resource('courses','CourseController');
 Route::resource('registrations','RegistrationController');
-
+Route::get('/studentdetails','RegistrationController@studentdetails');
+Route::get('/search','RegistrationController@search');
+Route::get('takencourses', 'RegistrationController@takencourse');
+Route::resource('sessions','SessionsController');
 
 
 });

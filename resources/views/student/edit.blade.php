@@ -67,7 +67,7 @@
                             <label for="roll" class="col-md-4 col-form-label text-md-right">Roll</label>
 
                             <div class="col-md-6">
-                                <input id="roll" type="text" class="form-control {{ $errors->has('roll') ? ' is-invalid':''}}" name="roll" value="{{ $students->roll }}" required autocomplete="roll" autofocus>
+                                <input id="roll" type="text" class="form-control {{ $errors->has('roll') ? ' is-invalid':''}}" name="roll" value="{{ $students->roll }}" required autocomplete="roll" autofocus readonly>
 
                                 @if ($errors->has('roll'))
                                     <span class="invalid-feedback" role="alert">

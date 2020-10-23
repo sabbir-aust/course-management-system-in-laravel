@@ -5,8 +5,9 @@
     @section('content')
 
         <div class="card">
+            <div class="card-header">Faculty List</div>
             <div class="card-body">
-                Faculty List || <a href="{{ route('faculties.create') }}">Add New</a>
+                <a class="btn btn-success btn-sm" href="{{ route('faculties.create') }}">Add New</a>
             </div>
             @if (session('status'))
                 <div class="alert alert-success" role="alert">
@@ -14,7 +15,7 @@
                 </div>
             @endif
             <div class="table-responsive">
-                <table class="table">
+                <table class="table table-sm">
                 <thead>
                 <tr>
                     <th scope="col">#</th>

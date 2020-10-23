@@ -3,8 +3,9 @@
 @section('title', 'Student')
 	@section('content')
 	             <div class="card"  style="overflow-x: auto;">
+                <div class="card-header">Student List</div>
 		              <div class="card-body">
-			                 Student List || <a href="{{url('student/create')}}">Add Student</a>
+			                 <a class="btn btn-success btn-sm" href="{{url('student/create')}}">Add Student</a>
 		              </div>
 		              @if (session('status'))
                       <div class="alert alert-success" role= "alert">
@@ -12,7 +13,7 @@
                       </div>
                   @endif
                 
-		                <table class="table" style="text-align: center;">
+		                <table class="table table-sm" style="text-align: center;">
   			               <thead>
     			               <tr>
       				              <th scope="col">#</th>

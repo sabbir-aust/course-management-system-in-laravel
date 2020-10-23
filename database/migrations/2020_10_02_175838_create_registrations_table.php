@@ -15,9 +15,11 @@ class CreateRegistrationsTable extends Migration
     {
         Schema::create('registrations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('semester');
+            //$table->string('semester');
             $table->unsignedBigInteger('student_id');
+            $table->foreign('student_id')->references('id')->on('students');
             $table->unsignedBigInteger('course_id');
+            $table->foreign('course_id')->references('id')->on('courses');
             $table->timestamps();
         });
     }

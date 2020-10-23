@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Student;
 use App\Department;
 use App\Classes;
 use App\User;
+use App\Models\Registration;
 use Illuminate\Support\Facades\Auth;
 //use Intervention\Image\Facades\Image;
 
@@ -18,8 +20,11 @@ class StudentController extends Controller
 
     	$students = Student::all();
     	return view('student.index', compact('students'));
+        //eitar kotha boltechilan na ?
 
     }
+
+    
 
     public function create(){
 

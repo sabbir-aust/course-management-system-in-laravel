@@ -22,7 +22,8 @@ class CreateCoursesTable extends Migration
             $table->unsignedBigInteger('faculty_id');
             $table->time('class_start_time');
             $table->time('class_end_time');
-            $table->string('seatlimit');
+            $table->integer('seatlimit');
+            //$table->string('current_seat');
             $table->timestamps();
         });
     }
